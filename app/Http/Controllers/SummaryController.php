@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\category;
 use App\Models\peserta;
 use Illuminate\Http\Request;
-use App\Models\Training_Record;
+use App\Models\training_record;
 
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Log;
