@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\training_record;
 
 class peserta extends Model
 {
@@ -15,7 +16,7 @@ class peserta extends Model
 
     public function trainingRecords()
     {
-        return $this->belongsToMany(Training_Record::class, 'hasil_peserta')->withPivot('theory_result', 'practical_result', 'level', 'final_judgement', 'license');
+        return $this->belongsToMany(training_record::class, 'hasil_peserta')->withPivot('theory_result', 'practical_result', 'level', 'final_judgement', 'license');
     }
 
     public function user()
