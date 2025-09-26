@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\training_record;
 use App\Models\peserta;
 use App\Exports\TrainingMatrixExport;
-use App\Models\Hasil_Peserta;
+use App\Models\hasil_peserta;
 use App\Models\training_skill;
 
 use Illuminate\Http\Request;
@@ -109,7 +109,7 @@ class TrainingMatrixController extends Controller
         });
 
         $allPesertaIds = $pesertas->pluck('id');
-        $stationsWithLevels = Hasil_Peserta::whereIn('peserta_id', $allPesertaIds)
+        $stationsWithLevels = hasil_peserta::whereIn('peserta_id', $allPesertaIds)
             ->whereIn('level', ['3', '4'])
             ->join('training_records', 'hasil_peserta.training_record_id', '=', 'training_records.id')
             ->where('status', 'completed')
@@ -156,7 +156,7 @@ class TrainingMatrixController extends Controller
 
       
 
-        $masterSkills = Training_Skill::withTrashed()
+        $masterSkills = training_skill::withTrashed()
             ->where('skill_code', '!=', 'NA')
             ->where('skill_code', '!=', 'N/A')
             ->whereNotNull('skill_code')  
@@ -164,7 +164,7 @@ class TrainingMatrixController extends Controller
             ->get()
             ->keyBy('skill_code');
 
-        $masterStations = Training_Record::where('status', 'Completed')
+        $masterStations = training_record::where('status', 'Completed')
             ->pluck('station')
             ->flatMap(fn($s) => explode(', ', $s))
             ->unique()
@@ -177,7 +177,7 @@ class TrainingMatrixController extends Controller
             ->sort()
             ->values();
 
-        $allPeserta = Peserta::query()
+        $allPeserta = peserta::query()
             ->whereHas('trainingRecords', fn($q) => $q->where('status', 'completed'))
             ->when($dept, function ($query) use ($dept) {
                 is_array($dept) ? $query->whereIn('dept', $dept) : $query->where('dept', $dept);
