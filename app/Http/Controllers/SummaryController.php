@@ -22,7 +22,7 @@ class SummaryController extends Controller
 
         $user = Auth::user();
 
-        $query = training_record::select('id', 'training_name', 'status', 'date_start', 'date_end', 'category_id', 'station', 'doc_ref', 'rev', 'trainer_name')
+        $query = Training_Record::select('id', 'training_name', 'status', 'date_start', 'date_end', 'category_id', 'station', 'doc_ref', 'rev', 'trainer_name')
             ->with(['trainingCategory:id,name'])
             ->where('status', 'Completed');
 
