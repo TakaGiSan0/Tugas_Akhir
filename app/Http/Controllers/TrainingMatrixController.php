@@ -18,17 +18,17 @@ class TrainingMatrixController extends Controller
     {
 
 
-        $departments = Peserta::whereHas('trainingRecords', fn($q) => $q->where('status', 'completed'))
+        $departments = peserta::whereHas('trainingRecords', fn($q) => $q->where('status', 'completed'))
             ->distinct()->pluck('dept')->toArray();
 
-        $masterSkills = Training_Skill::withTrashed()
+        $masterSkills = training_skill::withTrashed()
             ->where('skill_code', '!=', 'NA')
             ->where('skill_code', '!=', 'N/A')
             ->whereNotNull('skill_code')
             ->where('skill_code', '!=', '')
             ->get()
             ->keyBy('skill_code');
-        $allStations = Training_Record::where('status', 'Completed')
+        $allStations = training_record::where('status', 'Completed')
             ->pluck('station')
             ->flatMap(fn($s) => explode(', ', $s))
             ->unique()
@@ -42,7 +42,7 @@ class TrainingMatrixController extends Controller
 
         $user = auth('')->user();
 
-        $pesertasQuery = Peserta::query()
+        $pesertasQuery = peserta::query()
             ->ByDept()
             ->with([
                 'trainingRecords' => function ($query) {
