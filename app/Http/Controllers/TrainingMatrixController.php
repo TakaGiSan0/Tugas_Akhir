@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Training_Record;
-use App\Models\Peserta;
+use App\Models\peserta;
 use App\Exports\TrainingMatrixExport;
 use App\Models\Hasil_Peserta;
 use App\Models\training_skill;
