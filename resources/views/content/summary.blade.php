@@ -141,7 +141,7 @@
                                             </button>
 
                                             <div
-                                                class="dropdown-menu hidden absolute top-0 right-full ml-2 bg-white border rounded shadow-md z-50 w-32">
+                                                class="dropdown-menu hidden absolute top-0 right-full ml-2 bg-white border rounded shadow-md z-50 w-32 dark:bg-gray-800 dark:text-gray-400">
 
                                                 @if (in_array(Auth::user()->role, ['Super Admin', 'Admin']))
                                                     <a href="{{ route('download.summary', $rc->id) }}">
