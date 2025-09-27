@@ -127,7 +127,7 @@
                                         </button>
 
                                         <div
-                                            class="dropdown-menu hidden absolute top-0 right-full ml-2 bg-white border rounded shadow-md z-50 w-32">
+                                            class="dropdown-menu hidden absolute top-0 right-full ml-2 bg-white border rounded shadow-md z-50 w-32 dark:bg-gray-800 dark:text-gray-400">
 
                                             @if (in_array(Auth::user()->role, ['Super Admin', 'Admin']))
                                                 <a href="{{ route('download.employee', $rc->id) }}">
@@ -292,7 +292,7 @@
                         }
 
                         trainingRecordsContent += `
-                                <p class="text-lg font-bold text-left mb-4 dark:text-white">${category.name}</p>
+                                <p class="text-lg font-bold text-black text-left mb-4 dark:text-white">${category.name}</p>
                                 <table class="w-full text-sm text-center text-gray-500 dark:text-gray-400 mb-7">
                                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
@@ -313,19 +313,19 @@
 
                                 trainingRecordsContent += `
                 <tr class="">
-                    <th scope="row" class="px-4 py-3 font-medium text-gray-700 text-center whitespace-normal break-words  overflow-hidden max-w-xs">
+                    <th scope="row" class="px-4 py-3 font-medium text-gray-700 text-center dark:text-gray-400 whitespace-normal break-words  overflow-hidden max-w-xs">
                         ${training.training_name ?? '-'}
                     </th>
-                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center ">
+                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center dark:text-gray-400">
                         ${training.trainer_name ?? '-'}
                     </td>
-                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center ">
+                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center dark:text-gray-400">
                         ${training.date_formatted ?? '-'}
                     </td>
-                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center ">
+                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center dark:text-gray-400">
                         ${level}
                     </td>
-                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center ">
+                    <td class="px-4 py-3 font-medium text-gray-700 whitespace-nowrap text-center dark:text-gray-400">
                         ${finalJudgement}
                     </td>
                 </tr>`;
