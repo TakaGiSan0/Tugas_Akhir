@@ -30,7 +30,7 @@ class training_record extends Model
     }
     public function pesertas()
     {
-        return $this->belongsToMany(Peserta::class, 'hasil_peserta')->withPivot('level', 'final_judgement', 'license', 'theory_result', 'practical_result');
+        return $this->belongsToMany(peserta::class, 'hasil_peserta')->withPivot('level', 'final_judgement', 'license', 'theory_result', 'practical_result');
     }
 
     public function user()
@@ -40,7 +40,7 @@ class training_record extends Model
 
     public function training_skills()
     {
-        return $this->belongsToMany(Training_Skill::class);
+        return $this->belongsToMany(training_skill::class);
     }
 
     public function training_skill_record()
